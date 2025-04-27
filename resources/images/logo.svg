@@ -1,0 +1,8 @@
+<svg width="150" height="40" viewBox="0 0 250 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .text { font-family: 'Arial', sans-serif; font-weight: bold; font-size: 28px; fill: #007BFF; }
+        .wave { fill: #00C4CC; }
+    </style>
+    <path class="wave" d="M0,40 C40,80 80,0 120,40 C160,80 200,0 250,40 L250,60 L0,60 Z"/>
+    <text x="20" y="38" class="text">HireWave</text>
+</svg>
