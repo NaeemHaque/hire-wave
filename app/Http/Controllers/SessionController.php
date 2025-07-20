@@ -30,7 +30,7 @@ class SessionController extends Controller
         return redirect('/')->with('success', 'Welcome Back!');
     }
 
-    public function destroy(string $id)
+    public function destroy()
     {
         Auth::logout();
 

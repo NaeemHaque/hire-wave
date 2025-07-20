@@ -13,7 +13,12 @@ class JobController extends Controller
 {
     public function index()
     {
-        $jobs = Job::latest()->get()->groupBy('featured');
+        //eager loading
+        $jobs = Job::query()
+                   ->latest()
+                   ->with(['employer', 'tags'])
+                   ->get()
+                   ->groupBy('featured');
 
         return view('jobs.index', [
             'featuredJobs' => $jobs[0],
