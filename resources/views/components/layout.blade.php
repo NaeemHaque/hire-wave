@@ -15,9 +15,11 @@
     <div class="container mx-auto">
         <x-nav />
 
-        <main class="mt-10 max-w-[986px] mx-auto">
+        <main class="sm:my-8 md:my-16  max-w-[986px] mx-auto">
             {{ $slot }}
         </main>
+
+        <x-footer />
     </div>
 </body>
 </html>

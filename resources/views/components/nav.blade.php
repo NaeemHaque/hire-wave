@@ -7,7 +7,7 @@
 
     <!-- Desktop view -->
     <div class="hidden md:flex space-x-6 font-semibold">
-        <a href="#" class="hover:text-gray-300 transition-colors">Jobs</a>
+        <a href="/" class="hover:text-gray-300 transition-colors">Jobs</a>
         <a href="#" class="hover:text-gray-300 transition-colors">Careers</a>
         <a href="#" class="hover:text-gray-300 transition-colors">Salaries</a>
         <a href="#" class="hover:text-gray-300 transition-colors">Companies</a>
