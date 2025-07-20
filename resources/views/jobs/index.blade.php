@@ -3,10 +3,14 @@
         <section class="text-center my-10">
             <h1 class="font-bold text-4xl mt-6">Let's find a suitable position</h1>
 
-            <form class="mt-6">
-                <input type="text" placeholder="Full-steak developer"
-                       class="w-full max-w-xl px-5 p-4 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-1 focus:ring-offset-blue-800">
-            </form>
+{{--            <form class="mt-6">--}}
+{{--                <input type="text" placeholder="Full-steak developer"--}}
+{{--                       class="w-full max-w-xl px-5 p-4 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-1 focus:ring-offset-blue-800">--}}
+{{--            </form>--}}
+
+            <x-forms.form method="GET" action="/search" class="mt-8">
+                <x-forms.input name="q" :label="false" placeholder="Search for jobs..." />
+            </x-forms.form>
         </section>
 
 
