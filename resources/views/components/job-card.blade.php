@@ -4,7 +4,11 @@
     <div class="self-start text-sm">{{ $job->employer->name  }}</div>
 
     <div class="py-8">
-        <div class="text-xl font-bold"> {{ $job->title  }} </div>
+        <div class="text-xl font-bold">
+            <a href="{{ $job->url  }}" target="_blank">
+                {{ $job->title  }}
+            </a>
+        </div>
         <div class="text-sm mt-4">{{ $job->schedule  }} - {{$job->salary}} BDT</div>
     </div>
 

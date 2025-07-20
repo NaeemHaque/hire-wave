@@ -8,7 +8,11 @@
     <div class="flex-1 flex flex-col">
         <a href="#" class="self-start text-sm text-gray-400">{{ $job->employer->name  }}</a>
 
-        <div class="font-bold text-xl mt-2"> {{ $job->title  }} </div>
+        <div class="font-bold text-xl mt-2">
+            <a href="{{ $job->url }}" target="_blank">
+                {{ $job->title }}
+            </a>
+        </div>
         <div class="text-gray-400 text-sm mt-auto">{{ $job->schedule  }} -  {{$job->salary}} BDT</div>
     </div>
 
