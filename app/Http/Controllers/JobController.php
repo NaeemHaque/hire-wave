@@ -20,10 +20,16 @@ class JobController extends Controller
                    ->get()
                    ->groupBy('featured');
 
+        $tags = Tag::query()
+                   ->distinct('name')
+                   ->get();
+
+
+
         return view('jobs.index', [
-            'featuredJobs' => $jobs[0],
-            'jobs'         => $jobs[1],
-            'tags'         => Tag::all(),
+            'featuredJobs' => $jobs[0] ?? [],
+            'jobs'         => $jobs[1] ?? [],
+            'tags'         => $tags,
         ]);
     }
 

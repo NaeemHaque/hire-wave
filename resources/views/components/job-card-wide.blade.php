@@ -16,7 +16,7 @@
         <div class="text-gray-400 text-sm mt-auto">{{ $job->schedule  }} -  {{$job->salary}} BDT</div>
     </div>
 
-    <div class="space-x-1">
+    <div class="space-x-1 mb-2">
         @foreach($job->tags as $tag)
             <x-tag :tag="$tag" />
         @endforeach
