@@ -8,9 +8,8 @@
     <!-- Desktop view -->
     <div class="hidden md:flex space-x-6 font-semibold">
         <a href="/" class="hover:text-gray-300 transition-colors">Jobs</a>
-        <a href="#" class="hover:text-gray-300 transition-colors">Careers</a>
-        <a href="#" class="hover:text-gray-300 transition-colors">Salaries</a>
-        <a href="#" class="hover:text-gray-300 transition-colors">Companies</a>
+        <a href="/careers" class="hover:text-gray-300 transition-colors">Careers</a>
+        <a href="/employers" class="hover:text-gray-300 transition-colors">Companies</a>
     </div>
 
     @auth
@@ -49,10 +48,9 @@
          class="absolute top-full left-0 right-0 bg-[#101915] border-t border-white/10 shadow-lg hidden md:hidden z-50">
         <div class="px-4 py-4 space-y-4">
             <div class="space-y-3">
-                <a href="#" class="block font-semibold hover:text-gray-300 transition-colors">Jobs</a>
-                <a href="#" class="block font-semibold hover:text-gray-300 transition-colors">Careers</a>
-                <a href="#" class="block font-semibold hover:text-gray-300 transition-colors">Salaries</a>
-                <a href="#" class="block font-semibold hover:text-gray-300 transition-colors">Companies</a>
+                <a href="/" class="block font-semibold hover:text-gray-300 transition-colors">Jobs</a>
+                <a href="/careers" class="block font-semibold hover:text-gray-300 transition-colors">Careers</a>
+                <a href="/employers" class="block font-semibold hover:text-gray-300 transition-colors">Companies</a>
             </div>
 
             <div class="pt-4 border-t border-white/10">
