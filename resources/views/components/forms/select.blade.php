@@ -9,7 +9,7 @@
 @endphp
 
 <x-forms.field :$label :$name>
-    <select {{ $attributes($defaults) }}>
+    <select {{ $attributes->merge($defaults) }}>
         {{ $slot }}
     </select>
 </x-forms.field>

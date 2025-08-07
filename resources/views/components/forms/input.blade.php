@@ -15,6 +15,6 @@
 @endphp
 
 <x-forms.field :$label :$name>
-    <input {{ $attributes($defaults) }}>
+    <input {{ $attributes->merge($defaults) }}>
 </x-forms.field>
 

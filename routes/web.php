@@ -13,19 +13,20 @@ Route::get('/', [JobController::class, 'index']);
 Route::get('/search', SearchController::class);
 Route::get('/tags/{tag:name}', TagController::class);
 
-Route::middleware('auth')->prefix('/jobs')->group(function () {
-    Route::get('/', [JobController::class, 'create']);
-    Route::post('/', [JobController::class, 'store']);
-    Route::get('/{job}', [JobController::class, 'show']);
-    Route::get('/{job}/edit', [JobController::class, 'edit']);
-    Route::put('/{job}', [JobController::class, 'update']);
-    Route::delete('/{job}', [JobController::class, 'destroy']);
+Route::middleware('auth')->group(function () {
+    Route::get('/jobs', [JobController::class, 'create']);
+    Route::post('/jobs', [JobController::class, 'store']);
+    Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
+    Route::post('/jobs/{job}/update', [JobController::class, 'update']);
+    Route::delete('/jobs/{job}', [JobController::class, 'destroy']);
 });
+
+Route::get('/jobs/{job}', [JobController::class, 'show']);
 
 Route::middleware('auth')->prefix('/dashboard')->group(function () {
     Route::get('/', [EmployerController::class, 'dashboard']);
     Route::get('/profile', [EmployerController::class, 'profile']);
-    Route::put('/profile', [EmployerController::class, 'updateProfile']);
+    Route::post('/profile/update', [EmployerController::class, 'updateProfile']);
 });
 
 Route::middleware('guest')->group(function () {

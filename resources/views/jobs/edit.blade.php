@@ -15,7 +15,7 @@
 
         <!-- Edit Form -->
         <div class="bg-white/5 border border-white/10 rounded-2xl p-8">
-            <x-forms.form method="PUT" action="/jobs/{{ $job->id }}">
+            <x-forms.form method="POST" action="/jobs/{{ $job->id }}/update">
                 <x-forms.input name="title" label="Job Title" :value="$job->title" placeholder="Full-stack Developer" />
                 <x-forms.input name="salary" label="Salary" :value="$job->salary" placeholder="$10,000" />
                 <x-forms.input name="location" label="Location" :value="$job->location" placeholder="Remote" />

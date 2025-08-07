@@ -30,7 +30,7 @@
                 </div>
             </div>
 
-            <x-forms.form method="PUT" action="/dashboard/profile" enctype="multipart/form-data">
+            <x-forms.form method="POST" action="/dashboard/profile/update" enctype="multipart/form-data">
                 <x-forms.input name="name" label="Company Name" :value="$employer->name" />
                 
                 <x-forms.divider />
