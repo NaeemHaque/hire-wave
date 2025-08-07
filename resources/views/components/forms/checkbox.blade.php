@@ -5,13 +5,15 @@
         'type' => 'checkbox',
         'id' => $name,
         'name' => $name,
-        'value' => old($name)
+        'value' => '1'
     ];
+    
+    $checked = $attributes->get('checked') || old($name);
 @endphp
 
 <x-forms.field :$label :$name>
     <div class="rounded-xl bg-white/10 border border-white/10 px-5 py-4 w-full">
-        <input {{ $attributes($defaults) }}>
+        <input {{ $attributes($defaults) }} {{ $checked ? 'checked' : '' }}>
         <span class="pl-1">{{ $label }}</span>
     </div>
 </x-forms.field>

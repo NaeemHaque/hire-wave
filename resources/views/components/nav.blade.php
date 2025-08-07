@@ -14,6 +14,7 @@
 
     @auth
         <div class="hidden md:flex space-x-4 font-semibold">
+            <a href="/dashboard" class="hover:text-gray-300 transition-colors">Dashboard</a>
             <a href="/jobs" class="hover:text-gray-300 transition-colors">Post a job</a>
             <form action="/logout" method="POST" class="inline">
                 @csrf
@@ -56,6 +57,7 @@
             <div class="pt-4 border-t border-white/10">
                 @auth
                     <div class="space-y-3">
+                        <a href="/dashboard" class="block font-semibold hover:text-gray-300 transition-colors">Dashboard</a>
                         <a href="/jobs" class="block font-semibold hover:text-gray-300 transition-colors">Post a job</a>
                         <form action="/logout" method="POST" class="inline">
                             @csrf

@@ -16,6 +16,16 @@ Route::get('/tags/{tag:name}', TagController::class);
 Route::middleware('auth')->prefix('/jobs')->group(function () {
     Route::get('/', [JobController::class, 'create']);
     Route::post('/', [JobController::class, 'store']);
+    Route::get('/{job}', [JobController::class, 'show']);
+    Route::get('/{job}/edit', [JobController::class, 'edit']);
+    Route::put('/{job}', [JobController::class, 'update']);
+    Route::delete('/{job}', [JobController::class, 'destroy']);
+});
+
+Route::middleware('auth')->prefix('/dashboard')->group(function () {
+    Route::get('/', [EmployerController::class, 'dashboard']);
+    Route::get('/profile', [EmployerController::class, 'profile']);
+    Route::put('/profile', [EmployerController::class, 'updateProfile']);
 });
 
 Route::middleware('guest')->group(function () {

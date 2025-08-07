@@ -24,8 +24,6 @@ class JobController extends Controller
                    ->distinct('name')
                    ->get();
 
-
-
         return view('jobs.index', [
             'featuredJobs' => $jobs[0] ?? [],
             'jobs'         => $jobs[1] ?? [],
@@ -61,6 +59,73 @@ class JobController extends Controller
             }
         }
 
-        return redirect('/')->with('success', 'Job created!');
+        return redirect('/dashboard')->with('success', 'Job created!');
+    }
+
+    public function show(Job $job)
+    {
+        $job->load(['employer', 'tags']);
+
+        return view('jobs.show', [
+            'job' => $job,
+        ]);
+    }
+
+    public function edit(Job $job)
+    {
+        // Ensure the authenticated user owns this job
+        if ($job->employer->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $job->load('tags');
+
+        return view('jobs.edit', [
+            'job' => $job,
+        ]);
+    }
+
+    public function update(Request $request, Job $job)
+    {
+        // Ensure the authenticated user owns this job
+        if ($job->employer->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $attributes = $request->validate([
+            'title'    => ['required'],
+            'salary'   => ['required'],
+            'location' => ['required'],
+            'schedule' => ['required', Rule::in(['Full Time', 'Part Time', 'Contract'])],
+            'url'      => ['required', 'active_url'],
+            'tags'     => ['nullable'],
+        ]);
+
+        $attributes['featured'] = $request->has('featured');
+
+        $job->update(Arr::except($attributes, 'tags'));
+
+        // Update tags
+        $job->tags()->detach();
+        if ($attributes['tags']) {
+            $tags = explode(',', $attributes['tags']);
+            foreach ($tags as $tag) {
+                $job->tag($tag);
+            }
+        }
+
+        return redirect('/dashboard')->with('success', 'Job updated successfully!');
+    }
+
+    public function destroy(Job $job)
+    {
+        // Ensure the authenticated user owns this job
+        if ($job->employer->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        $job->delete();
+
+        return redirect('/dashboard')->with('success', 'Job deleted successfully!');
     }
 }
