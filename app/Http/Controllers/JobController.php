@@ -66,8 +66,35 @@ class JobController extends Controller
     {
         $job->load(['employer', 'tags']);
 
+        // Get similar jobs based on tags and other criteria
+        $similarJobs = Job::query()
+            ->where('id', '!=', $job->id) // Exclude current job
+            ->whereHas('tags', function ($query) use ($job) {
+                $query->whereIn('name', $job->tags->pluck('name'));
+            })
+            ->orWhere('schedule', $job->schedule)
+            ->orWhere('location', 'like', '%' . $job->location . '%')
+            ->with(['employer', 'tags'])
+            ->latest()
+            ->limit(3)
+            ->get();
+
+        // If not enough similar jobs, get recent jobs
+        if ($similarJobs->count() < 3) {
+            $additionalJobs = Job::query()
+                ->where('id', '!=', $job->id)
+                ->whereNotIn('id', $similarJobs->pluck('id'))
+                ->with(['employer', 'tags'])
+                ->latest()
+                ->limit(3 - $similarJobs->count())
+                ->get();
+
+            $similarJobs = $similarJobs->merge($additionalJobs);
+        }
+
         return view('jobs.show', [
             'job' => $job,
+            'similarJobs' => $similarJobs,
         ]);
     }
 

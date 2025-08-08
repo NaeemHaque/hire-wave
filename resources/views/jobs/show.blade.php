@@ -1,6 +1,4 @@
 <x-layout>
-    <x-page-heading>{{ $job->title }}</x-page-heading>
-
     <div class="space-y-12">
         <div class="min-h-screen py-8">
             <div class="max-w-4xl mx-auto px-4">
@@ -91,8 +89,8 @@
                         </div>
 
                         <!-- Right Content - Apply Section -->
-                        <div class="lg:w-80 flex-shrink-0">
-                            <div class="bg-white/10 border border-white/20 rounded-xl p-6 sticky top-8">
+                        <div class="lg:w-80 flex-shrink-0 my-auto">
+                            <div class="p-2 sticky top-8">
                                 <div class="text-center mb-6">
                                     @if($job->salary)
                                         <div class="text-3xl font-bold text-green-400 mb-2">
@@ -109,31 +107,6 @@
                                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-colors mb-4 text-lg block text-center">
                                     Apply Now
                                 </a>
-
-                                <!-- <button
-                                    class="w-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium py-3 px-6 rounded-xl transition-colors mb-6">
-                                    Save Job
-                                </button> -->
-
-                                <!-- Quick Stats -->
-                                <div class="space-y-3 text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-400">Job Type</span>
-                                        <span class="text-white">{{ ucfirst($job->schedule ?? 'Full-time') }}</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-400">Experience</span>
-                                        <span class="text-white">Mid-Senior Level</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-400">Industry</span>
-                                        <span class="text-white">Technology</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-400">Remote</span>
-                                        <span class="text-green-400">{{ str_contains(strtolower($job->location ?? ''), 'remote') ? 'Yes' : 'Hybrid' }}</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -262,25 +235,35 @@
                         <div class="bg-white/5 border border-white/10 rounded-xl p-6">
                             <h3 class="text-xl font-semibold text-white mb-4">Similar Jobs</h3>
                             <div class="space-y-4">
-                                @for($i = 1; $i <= 3; $i++)
-                                    <div class="group cursor-pointer">
-                                        <div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
-                                            <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                                                <span class="text-white text-sm font-semibold">{{ chr(64 + $i) }}</span>
-                                            </div>
-                                            <div class="flex-1 min-w-0">
-                                                <h4 class="font-medium text-white text-sm group-hover:text-blue-300 transition-colors truncate">
-                                                    {{ ['Senior Frontend Developer', 'Full Stack Engineer', 'Backend Developer'][$i-1] }}
-                                                </h4>
-                                                <p class="text-gray-400 text-xs">{{ ['TechCorp', 'StartupXYZ', 'InnovateLab'][$i-1] }}</p>
-                                                <p class="text-gray-500 text-xs mt-1">${{ rand(80, 150) }}k • Remote</p>
+                                @forelse($similarJobs as $similarJob)
+                                    <a href="/jobs/{{ $similarJob->id }}" class="block">
+                                        <div class="group cursor-pointer">
+                                            <div class="flex items-start space-x-3 p-3 rounded-lg hover:bg-white/5 transition-colors">
+                                                <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                                                    @if($similarJob->employer->logo)
+                                                        <img src="{{ Storage::disk('public')->url($similarJob->employer->logo) }}" alt="{{ $similarJob->employer->name }}" class="w-full h-full object-cover rounded-lg">
+                                                    @else
+                                                        <span class="text-white text-sm font-semibold">{{ substr($similarJob->employer->name, 0, 2) }}</span>
+                                                    @endif
+                                                </div>
+                                                <div class="flex-1 min-w-0">
+                                                    <h4 class="font-medium text-white text-sm group-hover:text-blue-300 transition-colors truncate">
+                                                        {{ $similarJob->title }}
+                                                    </h4>
+                                                    <p class="text-gray-400 text-xs">{{ $similarJob->employer->name }}</p>
+                                                    <p class="text-gray-500 text-xs mt-1">{{ $similarJob->schedule }} • {{ $similarJob->salary }} BDT</p>
+                                                </div>
                                             </div>
                                         </div>
+                                    </a>
+                                @empty
+                                    <div class="text-center py-4">
+                                        <p class="text-gray-400 text-sm">No similar jobs found</p>
                                     </div>
-                                @endfor
+                                @endforelse
 
                                 <div class="pt-2">
-                                    <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium">
+                                    <a href="/" class="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium">
                                         View More Similar Jobs →
                                     </a>
                                 </div>
