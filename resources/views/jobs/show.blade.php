@@ -110,10 +110,10 @@
                                     Apply Now
                                 </a>
 
-                                <button
+                                <!-- <button
                                     class="w-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium py-3 px-6 rounded-xl transition-colors mb-6">
                                     Save Job
-                                </button>
+                                </button> -->
 
                                 <!-- Quick Stats -->
                                 <div class="space-y-3 text-sm">
@@ -214,56 +214,6 @@
 
                     <!-- Sidebar -->
                     <div class="space-y-6">
-
-                        <!-- Company Info -->
-                        <div class="bg-white/5 border border-white/10 rounded-xl p-6">
-                            <h3 class="text-xl font-semibold text-white mb-4">About {{ $job->employer->name }}</h3>
-                            <div class="space-y-4">
-                                <div class="flex items-center space-x-3">
-                                    <div class="w-12 h-12 flex items-center justify-center overflow-hidden">
-                                        @if($job->employer->logo)
-                                            <x-employer-logo :employer="$job->employer" :size="48"/>
-                                        @else
-                                            <span class="text-white font-semibold">
-                                                {{ substr($job->employer->name, 0, 2) }}
-                                            </span>
-                                        @endif
-                                    </div>
-                                    <div>
-                                        <div class="font-semibold text-white">{{ $job->employer->name }}</div>
-                                        <div class="text-gray-400 text-sm">Technology Company</div>
-                                    </div>
-                                </div>
-
-                                <p class="text-gray-300 text-sm leading-relaxed">
-                                    {{ $job->employer->name }} is a leading technology company focused on innovation and
-                                    creating exceptional user experiences. We're passionate about building products that
-                                    make a difference.
-                                </p>
-
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-400">Company Size</span>
-                                        <span class="text-white">50-200 employees</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-400">Founded</span>
-                                        <span class="text-white">2018</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-400">Industry</span>
-                                        <span class="text-white">Technology</span>
-                                    </div>
-                                </div>
-
-                                <div class="pt-4 border-t border-white/10">
-                                    <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors text-sm font-medium">
-                                        View Company Profile →
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
                         <!-- Job Stats -->
                         <div class="bg-white/5 border border-white/10 rounded-xl p-6">
                             <h3 class="text-xl font-semibold text-white mb-4">Job Statistics</h3>
@@ -279,7 +229,7 @@
                                         </svg>
                                         <span class="text-gray-400 text-sm">Views</span>
                                     </div>
-                                    <span class="text-white font-medium">{{ rand(50, 500) }}</span>
+                                    <span class="text-white font-medium">{{ rand(5, 100) }}</span>
                                 </div>
 
                                 <div class="flex items-center justify-between">

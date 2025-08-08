@@ -10,11 +10,13 @@
         <a href="/" class="hover:text-gray-300 transition-colors">Jobs</a>
         <a href="/careers" class="hover:text-gray-300 transition-colors">Careers</a>
         <a href="/employers" class="hover:text-gray-300 transition-colors">Companies</a>
+        @auth
+            <a href="/dashboard" class="hover:text-gray-300 transition-colors">Dashboard</a>
+        @endauth
     </div>
 
     @auth
         <div class="hidden md:flex space-x-4 font-semibold">
-            <a href="/dashboard" class="hover:text-gray-300 transition-colors">Dashboard</a>
             <a href="/jobs" class="hover:text-gray-300 transition-colors">Post a job</a>
             <form action="/logout" method="POST" class="inline">
                 @csrf
