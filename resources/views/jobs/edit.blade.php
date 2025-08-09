@@ -31,6 +31,10 @@
 
                 <x-forms.divider />
 
+                <x-forms.textarea name="description" label="Job Description" :value="$job->description" placeholder="Enter detailed job description, requirements, responsibilities, and benefits..." />
+
+                <x-forms.divider />
+
                 <x-forms.input name="tags" label="Tags (comma separated)" :value="$job->tags->pluck('name')->implode(', ')" placeholder="Developer, Management, HR" />
 
                 <x-forms.divider />
@@ -88,6 +92,10 @@
                                 <span class="px-2 py-1 bg-white/10 text-white text-xs rounded-full">{{ $tag->name }}</span>
                             @endforeach
                         </div>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-sm">Description</p>
+                        <p class="text-white font-medium">{{ $job->description ? 'Provided' : 'Not provided' }}</p>
                     </div>
                 </div>
             </div>

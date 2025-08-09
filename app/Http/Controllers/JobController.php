@@ -44,6 +44,7 @@ class JobController extends Controller
             'location' => ['required'],
             'schedule' => ['required', Rule::in(['Full Time', 'Part Time', 'Contract'])],
             'url'      => ['required', 'active_url'],
+            'description' => ['nullable', 'string'],
             'tags'     => ['nullable'],
         ]);
 
@@ -125,6 +126,7 @@ class JobController extends Controller
             'location' => ['required'],
             'schedule' => ['required', Rule::in(['Full Time', 'Part Time', 'Contract'])],
             'url'      => ['required', 'active_url'],
+            'description' => ['nullable', 'string'],
             'tags'     => ['nullable'],
         ]);
 
