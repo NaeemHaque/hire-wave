@@ -123,52 +123,12 @@
                             <h2 class="text-2xl font-bold text-white mb-6">Job Description</h2>
                             <div class="prose prose-invert max-w-none">
                                 @if($job->description)
-                                    <div class="text-gray-300 leading-relaxed whitespace-pre-line">{{ $job->description }}</div>
+                                    <div class="text-gray-300 leading-relaxed whitespace-pre-line markdown-content">
+                                        @markdown($job->description)
+                                    </div>
                                 @else
-                                    <!-- Static Description for Demo -->
-                                    <div class="text-gray-300 leading-relaxed space-y-4">
-                                        <p>We are seeking a highly skilled and motivated {{ $job->title }} to join our
-                                            dynamic team. This is an excellent opportunity to work with cutting-edge
-                                            technologies and contribute to innovative projects that impact millions of
-                                            users worldwide.</p>
-
-                                        <h3 class="text-xl font-semibold text-white mt-6 mb-3">Key Responsibilities:</h3>
-                                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                            <li>Develop and maintain high-quality software solutions</li>
-                                            <li>Collaborate with cross-functional teams to define and implement new features</li>
-                                            <li>Write clean, maintainable, and efficient code</li>
-                                            <li>Participate in code reviews and contribute to team best practices</li>
-                                            <li>Troubleshoot and debug applications to optimize performance</li>
-                                            <li>Stay up-to-date with emerging technologies and industry trends</li>
-                                        </ul>
-
-                                        <h3 class="text-xl font-semibold text-white mt-6 mb-3">Requirements:</h3>
-                                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                            <li>Bachelor's degree in Computer Science or related field</li>
-                                            <li>3+ years of experience in software development</li>
-                                            <li>Strong proficiency in modern programming languages</li>
-                                            <li>Experience with database design and optimization</li>
-                                            <li>Excellent problem-solving and communication skills</li>
-                                            <li>Ability to work in a fast-paced, collaborative environment</li>
-                                        </ul>
-
-                                        <h3 class="text-xl font-semibold text-white mt-6 mb-3">Nice to Have:</h3>
-                                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                            <li>Experience with cloud platforms (AWS, Azure, GCP)</li>
-                                            <li>Knowledge of containerization and microservices</li>
-                                            <li>Previous experience in a startup environment</li>
-                                            <li>Contributions to open-source projects</li>
-                                        </ul>
-
-                                        <h3 class="text-xl font-semibold text-white mt-6 mb-3">What We Offer:</h3>
-                                        <ul class="list-disc list-inside space-y-2 text-gray-300">
-                                            <li>Competitive salary and equity package</li>
-                                            <li>Comprehensive health, dental, and vision insurance</li>
-                                            <li>Flexible work arrangements and remote-first culture</li>
-                                            <li>Professional development opportunities</li>
-                                            <li>Modern office space with all the amenities</li>
-                                            <li>Unlimited PTO and work-life balance focus</li>
-                                        </ul>
+                                    <div class="text-gray-300 leading-relaxed">
+                                        <p class="text-gray-400 italic">No job description provided.</p>
                                     </div>
                                 @endif
                             </div>
