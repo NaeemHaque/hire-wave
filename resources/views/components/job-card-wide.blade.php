@@ -9,7 +9,7 @@
         <a href="#" class="self-start text-sm text-gray-400">{{ $job->employer->name  }}</a>
 
         <div class="font-bold text-xl mt-2">
-            <a href="{{ $job->url }}" target="_blank">
+            <a href="/jobs/{{ $job->id }}" target="_blank">
                 {{ $job->title }}
             </a>
         </div>

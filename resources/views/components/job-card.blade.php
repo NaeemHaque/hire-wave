@@ -5,7 +5,7 @@
 
     <div class="py-8">
         <div class="text-xl font-bold">
-            <a href="{{ $job->url  }}" target="_blank">
+            <a href="/jobs/{{ $job->id  }}" target="_blank">
                 {{ $job->title  }}
             </a>
         </div>

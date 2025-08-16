@@ -17,6 +17,10 @@
 
         <x-forms.divider />
 
+        <x-forms.textarea name="description" label="Job Description" placeholder="Enter detailed job description, requirements, responsibilities, and benefits..." />
+
+        <x-forms.divider />
+
         <x-forms.input name="tags" label="Tags(comma separated)" placeholder="Developer, Management, HR" />
 
         <x-forms.button>Publish</x-forms.button>
