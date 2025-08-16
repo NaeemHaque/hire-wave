@@ -12,9 +12,6 @@
                     </div>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="/jobs" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
-                        Post New Job
-                    </a>
                     <a href="/dashboard/profile" class="bg-white/10 hover:bg-white/20 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
                         Edit Profile
                     </a>
@@ -83,7 +80,9 @@
                                 <div class="flex-1">
                                     <div class="flex items-center space-x-4">
                                         <div class="flex-1">
-                                            <h3 class="text-xl font-semibold text-white">{{ $job->title }}</h3>
+                                            <a href="/jobs/{{ $job->id  }}" target="_blank">
+                                                <h3 class="text-xl font-semibold text-white">{{ $job->title }}</h3>
+                                            </a>
                                             <p class="text-gray-400">{{ $job->location }} • {{ $job->salary }} BDT</p>
                                             <div class="flex items-center space-x-2 mt-2">
                                                 @if($job->featured)
@@ -92,9 +91,9 @@
                                                 <span class="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full">{{ $job->schedule }}</span>
                                             </div>
                                         </div>
-                                        <div class="flex items-center space-x-2">
-                                            <span class="text-gray-400 text-sm">{{ $job->created_at->diffForHumans() }}</span>
-                                        </div>
+{{--                                        <div class="flex items-center space-x-2">--}}
+{{--                                            <span class="text-gray-400 text-sm">{{ $job->created_at->diffForHumans() }}</span>--}}
+{{--                                        </div>--}}
                                     </div>
 
                                     @if($job->tags->count() > 0)
@@ -106,17 +105,22 @@
                                     @endif
                                 </div>
 
-                                <div class="flex items-center space-x-3 ml-6">
-                                    <a href="/jobs/{{ $job->id }}/edit" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors">
-                                        Edit
-                                    </a>
-                                    <form action="/jobs/{{ $job->id }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this job?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 px-4 py-2 rounded-lg transition-colors">
-                                            Delete
-                                        </button>
-                                    </form>
+                                <div class="flex flex-col items-end gap-2">
+                                    <div class="flex items-center space-x-2">
+                                        <span class="text-gray-400 text-sm">{{ $job->created_at->diffForHumans() }}</span>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <a href="/jobs/{{ $job->id }}/edit" class="bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors">
+                                            Edit
+                                        </a>
+                                        <form action="/jobs/{{ $job->id }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this job?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-red-500/20 hover:bg-red-500/30 text-red-300 px-4 py-2 rounded-lg transition-colors">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
